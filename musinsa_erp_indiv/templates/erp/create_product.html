@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+상품등록
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="wrap">
+        <h2 class="title-center"> 상품등록 </h2>
+        <form class="form-area" method="post" action="/create-product/">
+            {% csrf_token %}
+            <div class="form-group mt-2 mb-2">
+                <label for="product_name">상품 이름</label>
+                <input type="text" class="form-control" id="product_name" name="product_name">
+            </div>
+            <div class="form-group mt-2 mb-2">
+                <label for="product_code">상품 코드</label>
+                <input type="text" class="form-control" id="product_code" name="product_code">
+            </div>
+            <div class="form-group mt-2 mb-2">
+                <label for="product_description">상품 설명</label>
+                <input type="text" class="form-control" id="product_description" name="product_description">
+            </div>
+            <div class="form-group mt-2 mb-2">
+                <label for="product_price">상품 가격</label>
+                <input type="number" class="form-control" id="product_price" name="product_price">
+            </div>
+            <div class="form-group mt-2 mb-2">
+                <label for="product_size">사이즈</label>
+                <input type="text" class="form-control" id="product_size" name="product_size"
+                    placeholder="Small/Medium/Large/Free 중 한가지 입력">
+            </div>
+            <hr>
+            <div style="float: right">
+                <button type="submit" class="btn btn-primary">상품등록</button>
+                <a href="/product-list" class="btn btn-secondary">Home</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

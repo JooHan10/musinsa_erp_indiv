@@ -1,0 +1,73 @@
+<!-- templates/tweet/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container timeline-container">
+    <div class="row">
+        <!-- 왼쪽 컬럼 -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    <p class="card-text"> {{ user.email }} </p>
+
+                </div>
+            </div>
+        </div>
+        <!-- 오른 쪽 컬럼-->
+        <div class="col-md-7">
+            <!-- 글을 작성 하는 곳 -->
+            <!-- <div class="row mb-2">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h5 class="mt-0">나의 이야기를 적어주세요</h5>
+                                    <p>
+                                    <form method="post" action="/erp/">
+                                        {% csrf_token %}
+                                        <div class="form-group mb-2">
+                                            
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" style="float:right;">작성하기</button>
+                                    </form>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <hr>
+            <!-- 작성 된 글이 나오는 곳 -->
+            <div class="row">
+                {% for pr in products %}
+                <div class="col-md-12 mb-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h5 class="mt-0">상품명: {{ pr.product_name }}</h5>
+                                    <h5 class="mt-0">상품코드: {{ pr.product_code }}</h5>
+                                    <h5 class="mt-0">상세: {{ pr.product_description }}</h5>
+                                    <h5 class="mt-0">가격: {{ pr.product_price }}</h5>
+                                    <h5 class="mt-0">사이즈: {{ pr.product_size }}</h5>
+                                </div>
+                                <div style="text-align: right">
+                                    <span style="font-size: small">
+                                        {{ pr.author.username }}-{{ pr.created_at|timesince}} 전
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock %}
